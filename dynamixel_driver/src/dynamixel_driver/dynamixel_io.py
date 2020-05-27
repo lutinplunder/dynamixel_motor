@@ -133,7 +133,7 @@ class DynamixelIO(object):
 
             # wait for response packet from the motor
             timestamp = time.time()
-            time.sleep(0.0013)#0.00235)
+            time.sleep(0.0005) # 0.0013 #0.00235) 
 
             # read response
             data = self.__read_response(servo_id)
@@ -172,7 +172,7 @@ class DynamixelIO(object):
 
             # wait for response packet from the motor
             timestamp = time.time()
-            time.sleep(0.0013)
+            time.sleep(0.0005) # 0.0013
 
             # read response
             data = self.__read_response(servo_id)
@@ -235,7 +235,7 @@ class DynamixelIO(object):
 
             # wait for response packet from the motor
             timestamp = time.time()
-            time.sleep(0.0013)
+            time.sleep(0.0005) # 0.0013
 
             # read response
             try:
