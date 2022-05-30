@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # Software License Agreement (BSD License)
@@ -207,13 +207,13 @@ class ControllerManager:
                 # reload module if previously imported
                 package_module = reload(sys.modules[package_path])
             controller_module = getattr(package_module, module_name)
-        except ImportError, ie:
+        except ImportError as ie:
             self.start_controller_lock.release()
             return StartControllerResponse(False, 'Cannot find controller module. Unable to start controller %s\n%s' % (module_name, str(ie)))
-        except SyntaxError, se:
+        except SyntaxError as se:
             self.start_controller_lock.release()
             return StartControllerResponse(False, 'Syntax error in controller module. Unable to start controller %s\n%s' % (module_name, str(se)))
-        except Exception, e:
+        except Exception as e:
             self.start_controller_lock.release()
             return StartControllerResponse(False, 'Unknown error has occured. Unable to start controller %s\n%s' % (module_name, str(e)))
         
