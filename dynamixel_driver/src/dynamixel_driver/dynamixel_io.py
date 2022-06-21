@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # Software License Agreement (BSD License)
@@ -98,7 +98,7 @@ class DynamixelIO(object):
             if not data[0:2] == ['\xff', '\xff']: raise Exception('Wrong packet prefix %s' % data[0:2])
             data.extend(self.ser.read(ord(data[3])))
             data = array('B', ''.join(data)).tolist() # [int(b2a_hex(byte), 16) for byte in data]
-        except Exception as e:
+        except Exception, e:
             raise DroppedPacketError('Invalid response received from motor %d. %s' % (servo_id, e))
 
         # verify checksum
@@ -133,7 +133,7 @@ class DynamixelIO(object):
 
             # wait for response packet from the motor
             timestamp = time.time()
-            time.sleep(0.0005) # 0.0013 #0.00235) 
+            time.sleep(0.0013)#0.00235)
 
             # read response
             data = self.__read_response(servo_id)
@@ -172,7 +172,7 @@ class DynamixelIO(object):
 
             # wait for response packet from the motor
             timestamp = time.time()
-            time.sleep(0.0005) # 0.0013
+            time.sleep(0.0013)
 
             # read response
             data = self.__read_response(servo_id)
@@ -235,13 +235,13 @@ class DynamixelIO(object):
 
             # wait for response packet from the motor
             timestamp = time.time()
-            time.sleep(0.0005) # 0.0013
+            time.sleep(0.0013)
 
             # read response
             try:
                 response = self.__read_response(servo_id)
                 response.append(timestamp)
-            except Exception as e:
+            except Exception, e:
                 response = []
 
         if response:
