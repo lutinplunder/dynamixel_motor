@@ -207,13 +207,13 @@ class ControllerManager:
                 # reload module if previously imported
                 package_module = reload(sys.modules[package_path])
             controller_module = getattr(package_module, module_name)
-        except ImportError as ie:
+        except ImportError, ie:
             self.start_controller_lock.release()
             return StartControllerResponse(False, 'Cannot find controller module. Unable to start controller %s\n%s' % (module_name, str(ie)))
-        except SyntaxError as se:
+        except SyntaxError, se:
             self.start_controller_lock.release()
             return StartControllerResponse(False, 'Syntax error in controller module. Unable to start controller %s\n%s' % (module_name, str(se)))
-        except Exception as e:
+        except Exception, e:
             self.start_controller_lock.release()
             return StartControllerResponse(False, 'Unknown error has occured. Unable to start controller %s\n%s' % (module_name, str(e)))
         

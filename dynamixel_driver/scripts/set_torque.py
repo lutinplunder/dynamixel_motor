@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # Software License Agreement (BSD License)
@@ -74,7 +74,7 @@ if __name__ == '__main__':
 
     try:
         dxl_io = dynamixel_io.DynamixelIO(port, baudrate)
-    except dynamixel_io.SerialOpenError as soe:
+    except dynamixel_io.SerialOpenError, soe:
         print 'ERROR:', soe
     else:
         print 'Turning torque %s for motor %d' % (torque_on, motor_id)
