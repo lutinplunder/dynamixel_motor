@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5)
 project(dynamixel_controllers)
 
 find_package(catkin REQUIRED COMPONENTS message_generation)
